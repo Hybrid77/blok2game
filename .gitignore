@@ -1,0 +1,5 @@
+#Juan zorgt dat allebestanden in de 'bin' en 'obj'
+#map worden genegerd.
+
+**/bin/**
+**/obj/**
