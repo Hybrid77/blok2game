@@ -21,7 +21,88 @@ namespace PyramidPanic
         //fields.
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        
+
+        #region StartScene var.
+        // Dit maakt een variable aan die verwijst naar de StartScene
+        private StartScene startScene; 
+        #endregion
+
+        #region PlayScene var.
+        // Dit maakt een variable aan die verwijst naar de StartScene
+        private PlayScene playScene; 
+        #endregion
+
+        #region HelpScene var.
+        // Dit maakt een variable aan die verwijst naar de StartScene
+        private HelpScene helpScene; 
+        #endregion
+
+        #region GameOverScene var.
+        // Dit maakt een variable aan die verwijst naar de GameOverScene
+        private GameOverScene gameOverScene; 
+        #endregion
+
+        #region IState var.
+        //maak een variable iState aan van het typen interface IState.
+        private IState iState; 
+        #endregion
+
+
+
+        #region Properties van de Scenes en de IState.
+        //properties
+        //maakt de interface variable iState beschikbaar buiten de class door middel van 
+        // een property IState.
+        public IState IState
+        {
+
+            get { return this.iState; }
+            set { this.iState = value; }
+
+        }
+
+        //properties
+        //maakt de interface variable startScene beschikbaar buiten de class door middel van 
+        // een property StartScene
+        public StartScene StartScene
+        {
+
+            get { return this.startScene; }
+
+        }
+
+        //properties
+        //maakt de interface variable playScene beschikbaar buiten de class door middel van 
+        // een property PlayScene
+        public PlayScene PlayScene
+        {
+
+            get { return this.playScene; }
+
+        }
+
+        //properties
+        //maakt de interface variable helpScene beschikbaar buiten de class door middel van 
+        // een property HelpScene
+        public HelpScene HelpScene
+        {
+
+            get { return this.helpScene; }
+
+        }
+
+        //properties
+        //maakt de interface variable gameOverScene beschikbaar buiten de class door middel van 
+        // een property GameOverScene
+        public GameOverScene GameOverScene
+        {
+
+            get { return this.gameOverScene; }
+
+        } 
+        #endregion//#
+
+
 
         //dit is de constructor.
         public PyramidPanic()
@@ -34,7 +115,8 @@ namespace PyramidPanic
         {
             Window.Title = "Pyramid Panic v1.1.7";
 
-            //verandert de breedte van het canvas
+            #region Window Mesurements.
+		//verandert de breedte van het canvas
             this.graphics.PreferredBackBufferWidth = 640;
 
             //verandert de hoogte van het canvas
@@ -42,6 +124,7 @@ namespace PyramidPanic
 
             //past de nieuwe hoogte en breedte van het canvas
             this.graphics.ApplyChanges();
+	#endregion;
             
             
             base.Initialize();
@@ -50,9 +133,42 @@ namespace PyramidPanic
         
         protected override void LoadContent()
         {
+            #region The Spritebatch
             // een spritebatch is nodig voor het tekenen van textures op het canvas.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice); 
+            #endregion
 
+
+            #region Object that calls the class "StartScene".
+            // We maken nu het object/ instantie aan van het type startscreen.
+            //Dit doe je door:
+            // de constructor aan te roepen van de StartScene class.
+            this.startScene = new StartScene(this); 
+            #endregion
+
+            #region Object that calls the class "PlayScene".
+            // We maken nu het object/ instantie aan van het type playscreen.
+            //Dit doe je door:
+            // de constructor aan te roepen van de PlayScene class.
+            this.playScene = new PlayScene(this); 
+            #endregion
+
+            #region Object that calls the class "HelpScene".
+            // We maken nu het object/ instantie aan van het type helpscreen.
+            //Dit doe je door:
+            // de constructor aan te roepen van de HelpScene class.
+            this.helpScene = new HelpScene(this); 
+            #endregion
+
+            #region Object that calls the class "GameOverScene".
+            // We maken nu het object/ instantie aan van het type gameoverscreen.
+            //Dit doe je door:
+            // de constructor aan te roepen van de GameOverScene class.
+            this.gameOverScene = new GameOverScene(this); 
+            #endregion
+
+            //hier staat welke Scene word aangeroepen.
+            this.iState = this.StartScene;
            
         }
 
@@ -70,7 +186,30 @@ namespace PyramidPanic
                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
 
-           
+            #region This calls the UpdateMethod of startScene.
+            //roep de Update methode aan van de StartScene
+            //this.startScene.Update(gameTime); 
+            #endregion
+
+            #region This calls the UpdateMethod of playScene.
+            //roep de Update methode aan van de PlayScene
+            //this.playScene.Update(gameTime); 
+            #endregion
+
+            #region This calls the UpdateMethod of helpScene.
+            //roep de Update methode aan van de HelpScene
+            //this.helpScene.Update(gameTime); 
+            #endregion
+
+            #region This calls the UpdateMethod of gameoverScene.
+            //roep de Update methode aan van de GameOverScene
+            //this.gameoverScene.Update(gameTime); 
+            #endregion
+
+            Input.Update();
+            
+            //Dit vervangt wat hier boven staat.
+            this.iState.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -80,8 +219,38 @@ namespace PyramidPanic
         { 
             //geeft de achtergrond een kleur
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             
+            
+            //voor een sprite batch instantie iets kan tekenen moet de begin() methode
+            //aangeroepen worden van de spritebatch class.
+            this.spriteBatch.Begin();
+
+            #region This calls the DrawMethod of startscene.
+            //roep de draw method aan van startscene.
+            //this.startScene.Draw(gameTime); 
+            #endregion
+
+            #region This calls the DrawMethod of playscene.
+            //roep de draw method aan van playscene.
+            //this.playScene.Draw(gameTime); 
+            #endregion
+
+            #region This calls the DrawMethod of helpscene.
+            //roep de draw method aan van helpscene.
+            //this.helpScene.Draw(gameTime); 
+            #endregion
+
+            #region This calls the DrawMethod of gameoverscene.
+            //roep de draw method aan van helpscene.
+            this.gameOverScene.Draw(gameTime); 
+            #endregion
+
+            this.iState.Draw(gameTime);
+
+
+            // nadat de spritebatch.draw() is aangeroepen moet de end() methode van de 
+            //spritebatch class worden aangeroepen
+            this.spriteBatch.End();
 
             base.Draw(gameTime);
         }
