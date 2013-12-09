@@ -47,8 +47,6 @@ namespace PyramidPanic
         private IState iState; 
         #endregion
 
-
-
         #region Properties van de Scenes en de IState.
         //properties
         //maakt de interface variable iState beschikbaar buiten de class door middel van 
@@ -59,6 +57,15 @@ namespace PyramidPanic
             get { return this.iState; }
             set { this.iState = value; }
 
+        }
+#endregion
+
+        public SpriteBatch Spritebatch
+        {
+
+            get { return this.spriteBatch; }
+            set { this.spriteBatch = value; }
+        
         }
 
         //properties
@@ -100,10 +107,9 @@ namespace PyramidPanic
             get { return this.gameOverScene; }
 
         } 
-        #endregion//#
 
 
-
+          
         //dit is de constructor.
         public PyramidPanic()
         {
@@ -188,22 +194,22 @@ namespace PyramidPanic
 
             #region This calls the UpdateMethod of startScene.
             //roep de Update methode aan van de StartScene
-            //this.startScene.Update(gameTime); 
+            this.startScene.Update(gameTime); 
             #endregion
 
             #region This calls the UpdateMethod of playScene.
             //roep de Update methode aan van de PlayScene
-            //this.playScene.Update(gameTime); 
+            this.playScene.Update(gameTime); 
             #endregion
 
             #region This calls the UpdateMethod of helpScene.
             //roep de Update methode aan van de HelpScene
-            //this.helpScene.Update(gameTime); 
+            this.helpScene.Update(gameTime); 
             #endregion
 
             #region This calls the UpdateMethod of gameoverScene.
             //roep de Update methode aan van de GameOverScene
-            //this.gameoverScene.Update(gameTime); 
+            this.gameOverScene.Update(gameTime); 
             #endregion
 
             Input.Update();
