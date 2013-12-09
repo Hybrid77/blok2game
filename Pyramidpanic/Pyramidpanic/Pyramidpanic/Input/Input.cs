@@ -103,7 +103,6 @@ namespace PyramidPanic
 
             mouseRect.X = ms.X;
             mouseRect.Y = ms.Y;
-
             return mouseRect;
 
         }
