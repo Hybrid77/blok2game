@@ -187,30 +187,11 @@ namespace PyramidPanic
        
         protected override void Update(GameTime gameTime)
         {
+            IsMouseVisible = true;
             //zorgt dat het spel stopt waneer je op de back-button clickt.
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) || 
                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
-                this.Exit();
-
-            #region This calls the UpdateMethod of startScene.
-            //roep de Update methode aan van de StartScene
-            this.startScene.Update(gameTime); 
-            #endregion
-
-            #region This calls the UpdateMethod of playScene.
-            //roep de Update methode aan van de PlayScene
-            this.playScene.Update(gameTime); 
-            #endregion
-
-            #region This calls the UpdateMethod of helpScene.
-            //roep de Update methode aan van de HelpScene
-            this.helpScene.Update(gameTime); 
-            #endregion
-
-            #region This calls the UpdateMethod of gameoverScene.
-            //roep de Update methode aan van de GameOverScene
-            this.gameOverScene.Update(gameTime); 
-            #endregion
+                this.Exit();         
 
             Input.Update();
             

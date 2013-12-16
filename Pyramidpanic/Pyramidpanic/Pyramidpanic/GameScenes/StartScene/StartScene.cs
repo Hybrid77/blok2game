@@ -60,16 +60,18 @@ namespace PyramidPanic
 
         // Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
         //en update alle variabelen, methods enz....
-    public void Update(GameTime gameTime) { 
-    
-    if(Input.EdgeDetectKeyDown(Keys.Z) || (Input.EdgeDetectMousePressLeft())){
-        this.game.IState = this.game.PlayScene;
-    }
+    public void Update(GameTime gameTime) {
 
-    if (Input.EdgeDetectKeyDown(Keys.X))
-    {
-        this.game.IState = this.game.HelpScene;
-    }
+
+        this.menu.Update(gameTime);
+  /*  if(Input.EdgeDetectKeyDown(Keys.Z) || (Input.EdgeDetectMousePressLeft())){
+   *    this.game.IState = this.game.PlayScene;
+   * }
+
+   * if (Input.EdgeDetectKeyDown(Keys.X))
+   * {
+   *     this.game.IState = this.game.HelpScene;
+   * } */
 
 
 
