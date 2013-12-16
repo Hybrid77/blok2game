@@ -28,12 +28,20 @@ namespace PyramidPanic
        //maak een rectangle voor het detecteren van collisions
        private Rectangle rectangle;
 
-
+       //dit is een propery voor de color field
        public Color Color {
 
            get { return this.color; }
            set { this.color = value; }
        
+       }
+
+
+       //dit is een property voor de rectangle field
+       public Rectangle Rectangle {
+
+           get { return this.rectangle; }
+
        }
 
 

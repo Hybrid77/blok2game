@@ -116,7 +116,14 @@ namespace PyramidPanic
                break;
 
                case Buttons.Load:
-                    this.load.Color = this.activeColor;
+
+               if (Input.EdgeDetectKeyDown(Keys.Enter))
+               {
+                   this.game.IState = this.game.LoadScene;
+               }
+
+
+               this.load.Color = this.activeColor;
                break;
 
                case Buttons.Help:
@@ -129,7 +136,14 @@ namespace PyramidPanic
                     this.help.Color = this.activeColor;
                break;
 
+
+               
                case Buttons.Scores:
+
+               if (Input.EdgeDetectKeyDown(Keys.Enter))
+               {
+                   this.game.IState = this.game.ScoreScene;
+               }
                     this.scores.Color = this.activeColor;
                break;
 
@@ -137,6 +151,72 @@ namespace PyramidPanic
                     this.quit.Color = this.activeColor;
                break;
            }
+
+
+
+
+
+           if(this.start.Rectangle.Intersects(Input.MouseRect())){
+               if(Input.EdgeDetectMousePressLeft()){
+
+                   this.game.IState = this.game.PlayScene;
+               
+               }
+               this.start.Color = this.activeColor;
+
+           }
+
+           else if (this.load.Rectangle.Intersects(Input.MouseRect()))
+           {
+               if (Input.EdgeDetectMousePressLeft())
+               {
+
+                   this.game.IState = this.game.LoadScene;
+
+               }
+               this.load.Color = this.activeColor;
+               this.start.Color = Color.White;
+
+           }
+
+           else if (this.help.Rectangle.Intersects(Input.MouseRect()))
+           {
+               if (Input.EdgeDetectMousePressLeft())
+               {
+
+                   this.game.IState = this.game.HelpScene;
+
+               }
+               this.help.Color = this.activeColor;
+               this.start.Color = Color.White;
+           }
+
+           else if (this.scores.Rectangle.Intersects(Input.MouseRect()))
+           {
+               if (Input.EdgeDetectMousePressLeft())
+               {
+
+                   this.game.IState = this.game.ScoreScene;
+
+               }
+               this.scores.Color = this.activeColor;
+               this.start.Color = Color.White;
+           }
+
+           else if (this.quit.Rectangle.Intersects(Input.MouseRect()))
+           {
+
+               if (Input.EdgeDetectMousePressLeft())
+               {
+
+                   this.game.Exit();
+
+               }
+               this.quit.Color = this.activeColor;
+               this.start.Color = Color.White;
+           }
+
+           
        }
 
 

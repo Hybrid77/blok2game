@@ -42,6 +42,16 @@ namespace PyramidPanic
         private GameOverScene gameOverScene; 
         #endregion
 
+        #region LoadScene var.
+        // Dit maakt een variable aan die verwijst naar de GameOverScene
+        private LoadScene loadScene;
+        #endregion
+
+        #region ScoreScene var.
+        // Dit maakt een variable aan die verwijst naar de GameOverScene
+        private ScoreScene scoreScene;
+        #endregion
+
         #region IState var.
         //maak een variable iState aan van het typen interface IState.
         private IState iState; 
@@ -78,6 +88,8 @@ namespace PyramidPanic
 
         }
 
+        
+
         //properties
         //maakt de interface variable playScene beschikbaar buiten de class door middel van 
         // een property PlayScene
@@ -106,7 +118,28 @@ namespace PyramidPanic
 
             get { return this.gameOverScene; }
 
-        } 
+        }
+
+        //properties
+        //maakt de interface variable loadScene beschikbaar buiten de class door middel van 
+        // een property LoadScene
+        public LoadScene LoadScene
+        {
+
+            get { return this.loadScene; }
+
+        }
+
+
+        //properties
+        //maakt de interface variable loadScene beschikbaar buiten de class door middel van 
+        // een property LoadScene
+        public ScoreScene ScoreScene
+        {
+
+            get { return this.scoreScene; }
+
+        }
 
 
           
@@ -173,6 +206,20 @@ namespace PyramidPanic
             this.gameOverScene = new GameOverScene(this); 
             #endregion
 
+            #region Object that calls the class "LoadScene".
+            // We maken nu het object/ instantie aan van het type loadscreen.
+            //Dit doe je door:
+            // de constructor aan te roepen van de LoadScene class.
+            this.loadScene = new LoadScene(this);
+            #endregion
+
+            #region Object that calls the class "ScoreScene".
+            // We maken nu het object/ instantie aan van het type loadscreen.
+            //Dit doe je door:
+            // de constructor aan te roepen van de LoadScene class.
+            this.scoreScene = new ScoreScene(this);
+            #endregion
+
             //hier staat welke Scene word aangeroepen.
             this.iState = this.StartScene;
            
@@ -228,8 +275,18 @@ namespace PyramidPanic
             #endregion
 
             #region This calls the DrawMethod of gameoverscene.
-            //roep de draw method aan van helpscene.
+            //roep de draw method aan van gameoverscene.
             this.gameOverScene.Draw(gameTime); 
+            #endregion
+
+            #region This calls the DrawMethod of loadscene.
+            //roep de draw method aan van loadscene.
+            this.loadScene.Draw(gameTime);
+            #endregion
+
+            #region This calls the DrawMethod of scorescene.
+            //roep de draw method aan van scorescene.
+            this.scoreScene.Draw(gameTime);
             #endregion
 
             this.iState.Draw(gameTime);
