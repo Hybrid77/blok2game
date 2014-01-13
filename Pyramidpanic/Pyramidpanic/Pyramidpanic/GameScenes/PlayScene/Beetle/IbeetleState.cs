@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public interface IbeetleState
+    public interface IBeetleState
     {
         //elke toestand van de beetle class past de interface IBeetleState toe
         void Update(GameTime gameTime);
