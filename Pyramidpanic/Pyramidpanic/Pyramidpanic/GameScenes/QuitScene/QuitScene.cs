@@ -12,19 +12,18 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class PlayScene: IState //: IState voert de interface IState in.
+    public class QuitScene : IState //: IState voert de interface IState in.
     {
         //Fields van de class StartScene
         private PyramidPanic game;
-        private Scorpion scorpion;
-        private Beetle beetle;
+
         //de constructor ( heeft de zelfde naam als de class)
         //de constructor krijgt een object game mee van het type PyramidPanic
-        public PlayScene(PyramidPanic game)
+        public QuitScene(PyramidPanic game)
         {
 
             this.game = game;
-            this.Initialize();
+
         }
 
 
@@ -33,7 +32,7 @@ namespace PyramidPanic
 
         public void Initialize()
         {
-            this.LoadConent();
+
 
         }
 
@@ -41,8 +40,7 @@ namespace PyramidPanic
         //classes
         public void LoadConent()
         {
-            this.scorpion = new Scorpion(this.game);
-            this.beetle = new Beetle(this.game);
+
 
 
         }
@@ -57,17 +55,27 @@ namespace PyramidPanic
                 this.game.IState = this.game.StartScene;
             }
 
-            this.scorpion.Update(gameTime);
-            this.beetle.Update(gameTime);
+
+            if (Input.EdgeDetectKeyDown(Keys.X))
+            {
+                this.game.IState = this.game.HelpScene;
+            }
+
+
+            if (Input.EdgeDetectKeyDown(Keys.C))
+            {
+                this.game.IState = this.game.GameOverScene;
+            }
+
+
         }
         //Draw methode. Deze methode word normaal 60 maal perseconde aangeroepen en
         //tekent de textures op het canvas
         public void Draw(GameTime gameTime)
         {
 
-            this.game.GraphicsDevice.Clear(Color.Crimson);
-            this.scorpion.Draw(gameTime);
-            this.beetle.Draw(gameTime);
+            this.game.GraphicsDevice.Clear(Color.DeepSkyBlue);
+
 
         }
 
