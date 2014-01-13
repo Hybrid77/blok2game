@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    class Beetle : AnimatedSprite
+    class Beetle : WalkUp
     {
 
         //Fields
@@ -25,7 +25,7 @@ namespace PyramidPanic
         //properties
         public IBeetleState State
         {
-            set { return this.state = value; }
+            set { this.state = value; }
     
         }
 

@@ -15,7 +15,7 @@ namespace PyramidPanic
     public abstract class AnimatedSprite
     {
         //fields
-        private PyramidPanic game;
+        private Beetle beetle;
         private Rectangle sourceRectangle, destinationRectangle;
         private float timer = 0f;
 
@@ -25,9 +25,9 @@ namespace PyramidPanic
 
 
         //constructor
-        public AnimatedSprite(PyramidPanic game)
+        public AnimatedSprite(Beetle beetle)
         {
-        this.game = game;
+        this.beetle = beetle;
         this.destinationRectangle = new Rectangle(140, 240, 32, 32);
         this.sourceRectangle = new Rectangle(0, 0, 32, 32);
 
@@ -57,8 +57,8 @@ namespace PyramidPanic
         }
 
         //draw
-        public void Draw(GameTime gameTime, Texture2D texture) {
-            this.game.Spritebatch.Draw(texture,
+        public void Draw(GameTime gameTime) {
+            this.beetle.Game.Spritebatch.Draw(this.beetle.Texture,
                                             this.destinationRectangle,
                                             this.sourceRectangle,
                                             Color.White,

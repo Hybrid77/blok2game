@@ -14,14 +14,16 @@ namespace PyramidPanic
 {   
     //dit is een toestand class (dus moet hij de interface toepassen)
     //deze classe belooft dat hij de methods uit de interface haalt.
-    public class WalkUp
+    
+    
+    public class WalkUp : AnimatedSprite, IBeetleState
     {
         //fields
         private Beetle beetle;
 
 
         //constructor
-        public WalkUp(Beetle beetle) 
+        public WalkUp(Beetle beetle) : base(beetle)
         {
             this.beetle = beetle;
         
