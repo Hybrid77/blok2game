@@ -12,10 +12,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public interface IEntityState
+    public interface IAnimatedSprite
     {
-        //elke toestand van de beetle class past de interface IBeetleState toe
+        PyramidPanic Game { get; }
+        Texture2D Texture { get; }
+
         void Update(GameTime gameTime);
-        void Draw(GameTime gameTime);
+
     }
 }

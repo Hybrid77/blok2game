@@ -16,40 +16,41 @@ namespace PyramidPanic
     //deze classe belooft dat hij de methods uit de interface haalt.
     
     
-    public class WalkUp : AnimatedSprite, IEntityState
+    public class WalkRight : AnimatedSprite, IEntityState
     {
         //fields
-        private Beetle beetle;
+        private Scorpion scorpion;
 
 
         //constructor
-        public WalkUp(Beetle beetle) : base(beetle)
+        public WalkRight(Scorpion scorpion) : base(scorpion)
         {
-            this.beetle = beetle;
-            this.destinationRectangle = new Rectangle((int) this.beetle.Position.X, (int)this.beetle.Position.Y, 32, 32);
+            this.scorpion = scorpion;
+            this.destinationRectangle = new Rectangle((int)this.scorpion.Position.X, (int)this.scorpion.Position.Y, 32, 32);
         
         }
 
 
         public void Initialize()
         {
-            this.destinationRectangle.X = (int)this.beetle.Position.X;
-            this.destinationRectangle.Y = (int)this.beetle.Position.Y;
+            this.destinationRectangle.X = (int)this.scorpion.Position.X;
+            this.destinationRectangle.Y = (int)this.scorpion.Position.Y;
 
         }
+
 
         //update method
         public new void Update(GameTime gameTime) 
         {
 
-            if (this.beetle.Position.Y < 0) 
+            if (this.scorpion.Position.X > 640-32) 
             {
-                this.beetle.State = this.beetle.WalkDown;
-                this.beetle.WalkDown.Initialize();
+                this.scorpion.State = new WalkLeft(this.scorpion);
+                this.scorpion.WalkLeft.Initialize();
             }
-            this.beetle.Position -= new Vector2(0f, this.beetle.Speed);
-            this.destinationRectangle.X = (int) this.beetle.Position.X;
-            this.destinationRectangle.Y = (int)this.beetle.Position.Y;
+            this.scorpion.Position += new Vector2(this.scorpion.Speed, 0f);
+            this.destinationRectangle.X = (int)this.scorpion.Position.X;
+            this.destinationRectangle.Y = (int)this.scorpion.Position.Y;
             base.Update(gameTime);
         }
         

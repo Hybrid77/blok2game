@@ -12,54 +12,74 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    class Beetle : WalkUp
+    public class Beetle : IAnimatedSprite
     {
 
         //Fields
         private Texture2D texture;
         private PyramidPanic game;
-        private IBeetleState state;
-        private int speed = -2;
+        private IEntityState state;
+        private int speed = 2;
+        private Vector2 position;
+
+
+        //maakt van iedere toestand (met andere woorden state) een field
+        private WalkUp walkUp;
+        private WalkDown walkDown;
         
 
         //properties
-        public IBeetleState State
+        public WalkUp WalkUp
+        {
+            get { return this.walkUp; }
+
+        }
+        public WalkDown WalkDown
+        {
+            get { return this.walkDown; }
+
+        }
+        public Vector2 Position 
+        {
+
+            get { return this.position; }
+            set { this.position = value; }
+        
+        }
+        public IEntityState State
         {
             set { this.state = value; }
     
         }
-
         public PyramidPanic Game 
         {
             get { return this.game; }
         }
-
         public int Speed
         {
             get { return this.speed; }
         }
-
-
         public Texture2D Texture
         {
             get { return this.texture; }
         }
 
         //Constructor
-        public Beetle(PyramidPanic game)
-            : base(game)
+        public Beetle(PyramidPanic game, Vector2 position)
         {
+            this.position = position;
             this.game = game;
-            this.destinationRectangle.X = 500; // X positie
-            this.destinationRectangle.Y = 300; // Y positie
             this.texture = game.Content.Load<Texture2D>(@"PlayScene\Beetle\Beetle");
+            this.walkUp = new WalkUp(this);
+            this.walkDown = new WalkDown(this);
+            this.state = this.walkUp;
         }
 
 
         //Update
         public void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            this.state.Update(gameTime);
         }
 
 
@@ -67,7 +87,7 @@ namespace PyramidPanic
         //Draw
         public void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime, this.texture);
+            this.state.Draw(gameTime);
         }
     }
 }

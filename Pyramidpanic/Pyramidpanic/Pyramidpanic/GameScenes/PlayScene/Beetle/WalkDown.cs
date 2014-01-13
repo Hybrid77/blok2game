@@ -11,49 +11,58 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
-{   
+{
     //dit is een toestand class (dus moet hij de interface toepassen)
     //deze classe belooft dat hij de methods uit de interface haalt.
-    
-    
-    public class WalkUp : AnimatedSprite, IEntityState
+
+
+    public class WalkDown : AnimatedSprite, IEntityState
     {
         //fields
         private Beetle beetle;
-
+        
 
         //constructor
-        public WalkUp(Beetle beetle) : base(beetle)
+        public WalkDown(Beetle beetle)
+            : base(beetle)
         {
+            
             this.beetle = beetle;
-            this.destinationRectangle = new Rectangle((int) this.beetle.Position.X, (int)this.beetle.Position.Y, 32, 32);
+
+            this.effect = SpriteEffects.FlipVertically;
+            
+            this.destinationRectangle = new Rectangle((int)this.beetle.Position.X, 
+                                                      (int)this.beetle.Position.Y, 
+                                                       32, 
+                                                       32);
+
+        }
+
+        public void Initialize() 
+        {
+            this.destinationRectangle.X = (int) this.beetle.Position.X;
+            this.destinationRectangle.Y = (int)this.beetle.Position.Y;
         
         }
 
 
-        public void Initialize()
-        {
-            this.destinationRectangle.X = (int)this.beetle.Position.X;
-            this.destinationRectangle.Y = (int)this.beetle.Position.Y;
-
-        }
 
         //update method
-        public new void Update(GameTime gameTime) 
+        public new void Update(GameTime gameTime)
         {
-
-            if (this.beetle.Position.Y < 0) 
+            if (this.beetle.Position.Y > 480 -32 )
             {
-                this.beetle.State = this.beetle.WalkDown;
-                this.beetle.WalkDown.Initialize();
+                this.beetle.State = new WalkUp(this.beetle);
+                this.beetle.WalkUp.Initialize();
             }
-            this.beetle.Position -= new Vector2(0f, this.beetle.Speed);
-            this.destinationRectangle.X = (int) this.beetle.Position.X;
+
+            this.beetle.Position += new Vector2(0f, this.beetle.Speed);
+            this.destinationRectangle.X = (int)this.beetle.Position.X;
             this.destinationRectangle.Y = (int)this.beetle.Position.Y;
             base.Update(gameTime);
         }
-        
-        
+
+
         //draw method
         public new void Draw(GameTime gameTime)
         {

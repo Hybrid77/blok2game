@@ -16,8 +16,8 @@ namespace PyramidPanic
     {
         //Fields van de class StartScene
         private PyramidPanic game;
-        private Scorpion scorpion;
         private Beetle beetle;
+        private Scorpion scorpion;
         //de constructor ( heeft de zelfde naam als de class)
         //de constructor krijgt een object game mee van het type PyramidPanic
         public PlayScene(PyramidPanic game)
@@ -41,8 +41,8 @@ namespace PyramidPanic
         //classes
         public void LoadConent()
         {
-            this.scorpion = new Scorpion(this.game);
-            this.beetle = new Beetle(this.game);
+            this.scorpion = new Scorpion(this.game, new Vector2(300f, 188f));
+            this.beetle = new Beetle(this.game, new Vector2(100f,300f));
 
 
         }
@@ -57,8 +57,9 @@ namespace PyramidPanic
                 this.game.IState = this.game.StartScene;
             }
 
-            this.scorpion.Update(gameTime);
+          
             this.beetle.Update(gameTime);
+            this.scorpion.Update(gameTime);
         }
         //Draw methode. Deze methode word normaal 60 maal perseconde aangeroepen en
         //tekent de textures op het canvas
@@ -66,9 +67,9 @@ namespace PyramidPanic
         {
 
             this.game.GraphicsDevice.Clear(Color.Crimson);
-            this.scorpion.Draw(gameTime);
+            
             this.beetle.Draw(gameTime);
-
+            this.scorpion.Draw(gameTime);
         }
 
 

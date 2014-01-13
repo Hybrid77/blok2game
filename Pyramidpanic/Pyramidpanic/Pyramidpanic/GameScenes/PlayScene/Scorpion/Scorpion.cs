@@ -12,25 +12,74 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    class Scorpion : AnimatedSprite
+    public class Scorpion : IAnimatedSprite
     {
 
         //Fields
         private Texture2D texture;
         private PyramidPanic game;
-   
-        //Constructor
-        public Scorpion(PyramidPanic game) : base(game)
+        private IEntityState state;
+        private int speed = 2;
+        private Vector2 position;
+
+        //maakt van iedere toestand (met andere woorden state) een field
+        private WalkLeft walkLeft;
+        private WalkRight walkRight;
+
+
+        //properties
+        public WalkLeft WalkLeft 
         {
+            get { return this.walkLeft; }
+        
+        }
+        public WalkRight WalkRight
+        {
+            get { return this.walkRight; }
+
+        }
+        public Vector2 Position 
+        {
+
+            get { return this.position; }
+            set { this.position = value; }
+        
+        }
+        public IEntityState State
+        {
+            set { this.state = value; }
+    
+        }
+        public PyramidPanic Game 
+        {
+            get { return this.game; }
+        }
+        public int Speed
+        {
+            get { return this.speed; }
+        }
+        public Texture2D Texture
+        {
+            get { return this.texture; }
+        }
+
+
+        //Constructor
+        public Scorpion(PyramidPanic game, Vector2 position)
+        {
+            this.position = position;
             this.game = game;
             this.texture = game.Content.Load<Texture2D>(@"PlayScene\Scorpion\Scorpion");
+            this.walkLeft = new WalkLeft(this);
+            this.walkRight = new WalkRight(this);
+            this.state = new WalkLeft(this);
         }
 
 
         //Update
         public void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            this.state.Update(gameTime);
         }
 
 
@@ -38,7 +87,7 @@ namespace PyramidPanic
         //Draw
         public void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime, this.texture);       
+            this.state.Draw(gameTime);
         }
     }
 }
