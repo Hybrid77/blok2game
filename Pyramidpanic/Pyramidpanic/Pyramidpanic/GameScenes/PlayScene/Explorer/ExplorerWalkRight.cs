@@ -16,14 +16,15 @@ namespace PyramidPanic
     //deze classe belooft dat hij de methods uit de interface haalt.
     
     
-    public class WalkRight : AnimatedSprite, IEntityState
+    public class ExplorerWalkRight : AnimatedSprite, IEntityState
     {
         //fields
         private Scorpion scorpion;
         private Vector2 velocity;
 
         //constructor
-        public WalkRight(Scorpion scorpion) : base(scorpion)
+        public ExplorerWalkRight(Scorpion scorpion)
+            : base(scorpion)
         {
             this.scorpion = scorpion;
             this.destinationRectangle = new Rectangle((int)this.scorpion.Position.X, (int)this.scorpion.Position.Y, 32, 32);
