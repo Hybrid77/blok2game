@@ -17,37 +17,46 @@ namespace PyramidPanic
 
         //Fields
         private Texture2D texture;
+
         private PyramidPanic game;
         private IEntityState state;
-        private int speed = 5;
+        private int speed = 2;
         private Vector2 position;
-
+        
 
         //maakt van iedere toestand (met andere woorden state) een field
-        private ExplorerWalkUp walkUp;
-        private ExplorerWalkDown walkDown;
-        private ExplorerWalkUp walkLeft;
-        private ExplorerWalkDown walkRight;
+        private ExplorerWalkUp explorerWalkUp;
+        private ExplorerWalkDown explorerwalkDown;
+        private ExplorerWalkLeft explorerWalkLeft;
+        private ExplorerWalkRight explorerWalkRight;
+        private ExplorerIdle explorerIdle;
+        private Rectangle explorerRectangle;
+        private Vector2 origin;
 
         //properties
-        public WalkUp ExplorerWalkUp
+        public ExplorerWalkUp ExplorerWalkUp
         {
-            get { return this.walkUp; }
+            get { return this.explorerWalkUp; }
 
         }
-        public WalkDown ExplorerWalkDown
+        public ExplorerWalkDown ExplorerWalkDown
         {
-            get { return this.walkDown; }
+            get { return this.explorerwalkDown; }
 
         }
-        public WalkUp ExplorerWalkLeft
+        public ExplorerWalkLeft ExplorerWalkLeft
         {
-            get { return this.walkLeft; }
+            get { return this.explorerWalkLeft; }
 
         }
-        public WalkDown ExplorerWalkRight
+        public ExplorerWalkRight ExplorerWalkRight
         {
-            get { return this.walkRight; }
+            get { return this.explorerWalkRight; }
+
+        }
+        public ExplorerIdle ExplorerIdle
+        {
+            get { return this.explorerIdle; }
 
         }
         public Vector2 Position 
@@ -74,6 +83,7 @@ namespace PyramidPanic
         {
             get { return this.texture; }
         }
+        
 
         //Constructor
         public Explorer(PyramidPanic game, Vector2 position)
@@ -81,11 +91,15 @@ namespace PyramidPanic
             this.position = position;
             this.game = game;
             this.texture = game.Content.Load<Texture2D>(@"PlayScene\Explorer\Explorer");
-            this.walkUp = new ExplorerWalkUp(this);
-            this.walkDown = new ExplorerWalkDown(this);
-            this.walkUp = new ExplorerWalkLeft(this);
-            this.walkDown = new ExplorerWalkRight(this);
-            this.state = this.walkRight;
+            this.explorerWalkUp = new ExplorerWalkUp(this);
+            this.explorerwalkDown = new ExplorerWalkDown(this);
+            this.explorerWalkLeft = new ExplorerWalkLeft(this);
+            this.explorerWalkRight = new ExplorerWalkRight(this);
+            this.explorerIdle = new ExplorerIdle(this);
+            this.state = this.explorerIdle;
+            this.origin.X = this.texture.Width / 2;
+            this.origin.Y = this.texture.Height / 2;
+            this.explorerRectangle = new Rectangle((int)origin.X , (int)origin.Y, this.texture.Width/2, this.texture.Height/2);
         }
 
 

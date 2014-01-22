@@ -18,8 +18,11 @@ namespace PyramidPanic
         private IAnimatedSprite iAnimatedSprite;
         protected Rectangle sourceRectangle, destinationRectangle;
         private float timer = 0f;
+        private Vector2 spriteOrigin;
         protected SpriteEffects effect;
-        
+        protected int imageNumber = 0;
+        protected float rotation = 0f;
+
         //properties
         
 
@@ -29,8 +32,8 @@ namespace PyramidPanic
         {
         this.iAnimatedSprite = iAnimatedSprite;
         this.effect = SpriteEffects.None;
-        this.sourceRectangle = new Rectangle(0, 0, 32, 32);
-
+        this.sourceRectangle = new Rectangle(this.imageNumber, 0, 32, 32);
+        this.spriteOrigin = new Vector2(16, 16);
     
         }
 
@@ -62,8 +65,8 @@ namespace PyramidPanic
                                             this.destinationRectangle,
                                             this.sourceRectangle,
                                             Color.White,
-                                            0f,
-                                            Vector2.Zero,
+                                            this.rotation,
+                                            this.spriteOrigin,
                                             this.effect,
                                             0f);
         

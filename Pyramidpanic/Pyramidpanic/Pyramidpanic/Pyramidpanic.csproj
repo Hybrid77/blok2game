@@ -111,6 +111,12 @@
     <Compile Include="GameScenes\HelpScene\HelpScene.cs" />
     <Compile Include="GameScenes\LoadScene\LoadScene.cs" />
     <Compile Include="GameScenes\PlayScene\Beetle\Beetle.cs" />
+    <Compile Include="GameScenes\PlayScene\Explorer\ExplorerWalkUp.cs" />
+    <Compile Include="GameScenes\PlayScene\Explorer\ExplorerWalkDown.cs" />
+    <Compile Include="GameScenes\PlayScene\Explorer\ExplorerIdle.cs" />
+    <Compile Include="GameScenes\PlayScene\Explorer\ExplorerWalkLeft.cs" />
+    <Compile Include="GameScenes\PlayScene\Explorer\Explorer.cs" />
+    <Compile Include="GameScenes\PlayScene\Explorer\ExplorerWalkRight.cs" />
     <Compile Include="GameScenes\PlayScene\IEntityState.cs" />
     <Compile Include="GameScenes\PlayScene\Beetle\WalkDown.cs" />
     <Compile Include="GameScenes\PlayScene\Beetle\WalkUp.cs" />
@@ -168,9 +174,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameScenes\PlayScene\Explorer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

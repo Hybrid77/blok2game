@@ -16,20 +16,20 @@ namespace PyramidPanic
     //deze classe belooft dat hij de methods uit de interface haalt.
     
     
-    public class ExplorerWalkRight : AnimatedSprite, IEntityState
+    public class ExplorerWalkLeft : AnimatedSprite, IEntityState
     {
         //fields
         private Explorer explorer;
         private Vector2 velocity;
 
         //constructor
-        public ExplorerWalkRight(Explorer explorer)
+        public ExplorerWalkLeft(Explorer explorer)
             : base(explorer)
         {
             this.explorer = explorer;
             this.destinationRectangle = new Rectangle((int)this.explorer.Position.X, (int)this.explorer.Position.Y, 32, 32);
             this.velocity = new Vector2(this.explorer.Speed, 0f);
-           
+            this.effect = SpriteEffects.FlipHorizontally;
         }
 
 
@@ -45,22 +45,21 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime) 
         {
 
-            if (this.explorer.Position.X > 480-32) 
+            if (this.explorer.Position.X < 0) 
             {
                 this.explorer.State = this.explorer.ExplorerIdle;
                 this.explorer.ExplorerIdle.Initialize();
-               
             }
 
-            if (Input.EdgeDetectKeyUp(Keys.Right))
+            if (Input.EdgeDetectKeyUp(Keys.Left))
             {
                 this.explorer.State = this.explorer.ExplorerIdle;
                 this.explorer.ExplorerIdle.Initialize();
-                this.effect = SpriteEffects.FlipVertically;
+                this.effect = SpriteEffects.FlipHorizontally;
             }
+           
 
-
-            this.explorer.Position += this.velocity;
+            this.explorer.Position -= this.velocity;
             this.destinationRectangle.X = (int)this.explorer.Position.X;
             this.destinationRectangle.Y = (int)this.explorer.Position.Y;
             base.Update(gameTime);

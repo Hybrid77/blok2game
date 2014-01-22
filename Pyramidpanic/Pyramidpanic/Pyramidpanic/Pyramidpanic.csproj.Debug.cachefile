@@ -8,3 +8,6 @@ Content\StartScene\Button_scores.xnb
 Content\StartScene\Button_start.xnb
 Content\PlayScene\Scorpion\Scorpion.xnb
 Content\PlayScene\Beetle\Beetle.xnb
+Content\PlayScene\Explorer\Explorer.xnb
+Content\PlayScene\Explorer\explorer_down.xnb
+Content\PlayScene\Background2.xnb
