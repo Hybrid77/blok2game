@@ -50,7 +50,7 @@ namespace PyramidPanic
 
             if (this.explorer.Position.Y < 0+ 17) 
             {
-                this.explorer.State = this.explorer.ExplorerIdle;
+                this.explorer.State = this.explorer.ExplorerIdleWalk;
                 this.explorer.ExplorerIdle.Initialize();
                
             }

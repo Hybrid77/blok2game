@@ -17,5 +17,6 @@ namespace PyramidPanic
         //elke toestand van de beetle class past de interface IBeetleState toe
         void Update(GameTime gameTime);
         void Draw(GameTime gameTime);
+        void Initialize();
     }
 }

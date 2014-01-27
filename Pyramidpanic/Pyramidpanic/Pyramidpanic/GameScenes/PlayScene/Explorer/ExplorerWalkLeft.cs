@@ -45,10 +45,14 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime) 
         {
 
-            if (this.explorer.Position.X < 0 + 17) 
+            this.explorer.Position -= this.velocity;
+
+            if (this.explorer.Position.X < 0 + 16) 
             {
-                this.explorer.State = this.explorer.ExplorerIdle;
-                this.explorer.ExplorerIdle.Initialize();
+                this.explorer.Position += this.velocity;
+                this.explorer.State = this.explorer.ExplorerIdleWalk;
+                this.explorer.ExplorerIdleWalk.Effect = SpriteEffects.FlipHorizontally;
+                this.explorer.ExplorerIdleWalk.Rotation = 0f;
             }
 
             if (Input.EdgeDetectKeyUp(Keys.Left))

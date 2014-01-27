@@ -56,46 +56,33 @@ namespace PyramidPanic
         //update method
         public new void Update(GameTime gameTime) 
         {
-           
-
-
-
-
-            if (this.explorer.Position.X < 640-15) 
+            if (Input.EdgeDetectKeyUp(Keys.Right)) 
             {
-               // this.explorer.State = this.explorer.ExplorerWalkLeft;
-                //this.explorer.ExplorerWalkLeft.Initialize();
-            }
-
-            if (Input.EdgeDetectKeyDown(Keys.Right)) 
-            {
-                this.explorer.State = this.explorer.ExplorerWalkRight;
-                this.explorer.ExplorerWalkRight.Initialize();
-                this.explorer.ExplorerIdle.Rotation = 0;
-                this.effect = SpriteEffects.FlipVertically;
+                this.explorer.State = this.explorer.ExplorerIdle;
+                this.explorer.ExplorerIdle.Rotation = 0f;
+                this.explorer.ExplorerIdle.Effect = SpriteEffects.FlipVertically;
                 
             }
-            else if (Input.EdgeDetectKeyDown(Keys.Left))
+            else if (Input.EdgeDetectKeyUp(Keys.Left))
             {
-                this.explorer.State = this.explorer.ExplorerWalkLeft;
-                this.explorer.ExplorerWalkLeft.Initialize();
-                this.explorer.ExplorerIdle.Rotation = 0;
-                this.effect = SpriteEffects.FlipHorizontally;
+                this.explorer.State = this.explorer.ExplorerIdle;
+                this.explorer.ExplorerIdleWalk.Rotation = 0f;
+                this.explorer.ExplorerIdle.Effect = SpriteEffects.FlipHorizontally;
                 
             }
 
-            else if (Input.EdgeDetectKeyDown(Keys.Down))
+            else if (Input.EdgeDetectKeyUp(Keys.Down))
             {
-                this.explorer.State = this.explorer.ExplorerWalkDown;
+                this.explorer.State = this.explorer.ExplorerIdle;
                 this.explorer.ExplorerWalkDown.Initialize();
-                this.explorer.ExplorerIdle.rotation = (float)Math.PI / 2;
+                this.explorer.ExplorerIdleWalk.rotation = (float)Math.PI / 2;
                 this.effect = SpriteEffects.FlipVertically;
             }
-            else if (Input.EdgeDetectKeyDown(Keys.Up))
+            else if (Input.EdgeDetectKeyUp(Keys.Up))
             {
-                this.explorer.State = this.explorer.ExplorerWalkUp;
+                this.explorer.State = this.explorer.ExplorerIdle;
                 this.explorer.ExplorerWalkUp.Initialize();
-                this.explorer.ExplorerIdle.rotation = (float)Math.PI / 2;
+                this.explorer.ExplorerIdleWalk.rotation = (float)Math.PI / 2;
                 this.effect = SpriteEffects.FlipVertically;
             }
             this.explorer.Position += this.velocity;

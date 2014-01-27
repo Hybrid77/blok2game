@@ -58,17 +58,8 @@ namespace PyramidPanic
         //update method
         public new void Update(GameTime gameTime) 
         {
-           
 
-
-
-
-            if (this.explorer.Position.X < 640-15) 
-            {
-               // this.explorer.State = this.explorer.ExplorerWalkLeft;
-                //this.explorer.ExplorerWalkLeft.Initialize();
-            }
-
+            
             if (Input.EdgeDetectKeyDown(Keys.Right)) 
             {
                 this.explorer.State = this.explorer.ExplorerWalkRight;
