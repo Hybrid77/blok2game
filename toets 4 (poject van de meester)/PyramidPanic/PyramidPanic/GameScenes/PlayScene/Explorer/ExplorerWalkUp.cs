@@ -43,7 +43,7 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime)
         {
             // Deze code zorgt ervoor dat de explorer niet buiten de rechterrand
-            // kan lopen.
+            // kan lopen..
             this.explorer.Position -= this.velocity;
 
             if (this.explorer.Position.Y < 0 + 16)
