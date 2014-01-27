@@ -45,7 +45,7 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime) 
         {
 
-            if (this.explorer.Position.X < 0) 
+            if (this.explorer.Position.X < 0 + 17) 
             {
                 this.explorer.State = this.explorer.ExplorerIdle;
                 this.explorer.ExplorerIdle.Initialize();

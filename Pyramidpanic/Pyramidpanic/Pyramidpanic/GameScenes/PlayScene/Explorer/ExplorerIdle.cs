@@ -63,7 +63,7 @@ namespace PyramidPanic
 
 
 
-            if (this.explorer.Position.X < 640-32) 
+            if (this.explorer.Position.X < 640-15) 
             {
                // this.explorer.State = this.explorer.ExplorerWalkLeft;
                 //this.explorer.ExplorerWalkLeft.Initialize();
