@@ -30,6 +30,7 @@ namespace PyramidPanic
         private ExplorerWalkLeft explorerWalkLeft;
         private ExplorerWalkRight explorerWalkRight;
         private ExplorerIdle explorerIdle;
+        private ExplorerIdleWalk explorerIdleWalk;
         private Rectangle explorerRectangle;
         private Vector2 origin;
 
@@ -57,6 +58,11 @@ namespace PyramidPanic
         public ExplorerIdle ExplorerIdle
         {
             get { return this.explorerIdle; }
+
+        }
+        public ExplorerIdleWalk ExplorerIdleWalk
+        {
+            get { return this.explorerIdleWalk; }
 
         }
         public Vector2 Position 
@@ -96,6 +102,7 @@ namespace PyramidPanic
             this.explorerWalkLeft = new ExplorerWalkLeft(this);
             this.explorerWalkRight = new ExplorerWalkRight(this);
             this.explorerIdle = new ExplorerIdle(this);
+            this.explorerIdleWalk = new ExplorerIdleWalk(this);
             this.state = this.explorerIdle;
             this.origin.X = this.texture.Width / 2;
             this.origin.Y = this.texture.Height / 2;
