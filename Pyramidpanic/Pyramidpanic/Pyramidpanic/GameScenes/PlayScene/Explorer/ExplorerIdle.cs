@@ -109,9 +109,13 @@ namespace PyramidPanic
             //als de pijltoets die naar beneden wijst is ingedrukt dan: 
             else if (Input.EdgeDetectKeyDown(Keys.Up))
             {
+                //word de state van de explorer explorerewalkup en
                 this.explorer.State = this.explorer.ExplorerWalkUp;
+                //word de initialize method aangeroepen van explorerwalkup plus 
                 this.explorer.ExplorerWalkUp.Initialize();
+                //de rotation can explorer idle word aangegeven als pi/2
                 this.explorer.ExplorerIdle.rotation = (float)Math.PI / 2;
+                //maar de effext is aangegeven als flip vertically zodat de fakel aan de linker kant blijft
                 this.effect = SpriteEffects.FlipVertically;
             }
             this.explorer.Position += this.velocity;
