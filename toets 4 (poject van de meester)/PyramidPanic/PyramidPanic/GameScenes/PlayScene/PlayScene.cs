@@ -19,6 +19,7 @@ namespace PyramidPanic
         private Beetle beetle, beetle1;
         private Scorpion scorpion, scorpion1;
         private Explorer explorer;
+        private Block block1; 
 
         // Constructor van de StartScene-class krijgt een object game mee van het type PyramidPanic
         public PlayScene(PyramidPanic game)
