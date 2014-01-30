@@ -48,29 +48,44 @@ namespace PyramidPanic
         {
             this.explorer.Position += this.velocity;
 
-            if (this.explorer.Position.Y > 480-17) 
+            //als de x positie op 480 - 17 staat dan:
+            if (this.explorer.Position.Y > 480-17)
             {
+                //word de velocity 0 en kan de explorer neit meer bewegen
                 this.explorer.Position -= this.velocity;
+                //de state verandert naar explorer idle walk
                 this.explorer.State = this.explorer.ExplorerIdleWalk;
-                this.explorer.ExplorerIdleWalk.Initialize();
+                //de spriteeffect word none omdat je de fakkel dan al links hebt
                 this.explorer.ExplorerIdleWalk.Effect = SpriteEffects.None;
+                //en de rotation krijgt een vaste waarde van pi/2 in exploreridlewalk
+                //zodat de explorer naar benedern kijkt als die loopt en still staat
                 this.explorer.ExplorerIdleWalk.Rotation = (float)Math.PI / 2;
                 
                
             }
 
+            //als de pijltjestoets die naar benedenwijst los gelaten word dan:
             if (Input.EdgeDetectKeyUp(Keys.Down))
             {
+
+                //word de state van de explorer explorereidle en
                 this.explorer.State = this.explorer.ExplorerIdle;
-                this.explorer.ExplorerIdle.Initialize();
-                this.effect = SpriteEffects.FlipVertically;
+                //maar de effect is aangegeven als flipvertically 
+                //zodat de fakel aan de linker kant blijft
+                this.explorer.ExplorerIdle.Effect = SpriteEffects.FlipVertically;
                 
             }
 
 
             this.explorer.Position += this.velocity;
+            //hier staat dat de destination rextangle van de x
+            //gelijkstaat aan de (int) x positie van this.explorer
             this.destinationRectangle.X = (int)this.explorer.Position.X;
+            //hier staat dat de destination rextangle van de x
+            //gelijkstaat aan de (int) x positie van this.explorer.
             this.destinationRectangle.Y = (int)this.explorer.Position.Y;
+            //hier word de base.update method aangeroepen,
+            //en gameTime word er in mee gegeven
             base.Update(gameTime);
         }
         

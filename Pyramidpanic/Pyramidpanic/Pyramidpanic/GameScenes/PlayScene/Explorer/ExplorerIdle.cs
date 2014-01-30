@@ -27,12 +27,14 @@ namespace PyramidPanic
         
 
         //properties
-        //hier word de property van de spriteEffects aangegeven waar in de setter van de effect word aangegeven als value.
+        //hier word de property van de spriteEffects aangegeven 
+        //waar in de setter van de effect word aangegeven als value.
         public SpriteEffects Effect
         {
             set { this.effect = value; }
         }
-        //hier
+        //hier word de setter van rotation aangegeven als value zodat het later
+        //nog aangepast kan worden met de value die jij er aan geeft.
         public float Rotation
         {
             set { this.rotation = value; }
@@ -49,7 +51,8 @@ namespace PyramidPanic
             this.destinationRectangle = new Rectangle(0, 0, 32, 32);
             //hier word de velocity aangegeven als 0 bij 0 als een float getal
             this.velocity = new Vector2(0f, 0f);
-            //hier word de spriteEffects aangeroepen en er word erna aangegeven dat het verticaal word gespiegelt.
+            //hier word de spriteEffects aangeroepen en er word erna aangegeven 
+            //dat het verticaal word gespiegelt.
             this.effect = SpriteEffects.FlipVertically;
             
         }
@@ -76,7 +79,8 @@ namespace PyramidPanic
                 this.explorer.ExplorerWalkRight.Initialize();
                 //de rotation can explorer idle word aangegeven als 0
                 this.explorer.ExplorerIdle.Rotation = 0;
-                //maar de effext is aangegeven als flip vertically zodat de fakel aan de linker kant blijft
+                //maar de effect is aangegeven als flipvertically 
+                //zodat de fakel aan de linker kant blijft
                 this.effect = SpriteEffects.FlipVertically;
                 
             }
@@ -89,7 +93,8 @@ namespace PyramidPanic
                 this.explorer.ExplorerWalkLeft.Initialize();
                 //de rotation can explorer idle word aangegeven als 0
                 this.explorer.ExplorerIdle.Rotation = 0;
-                //maar de effext is aangegeven als flip vertically zodat de fakel aan de linker kant blijft
+                //maar de effect is aangegeven als flipvertically 
+                //zodat de fakel aan de linker kant blijft
                 this.effect = SpriteEffects.FlipHorizontally;
                 
             }
@@ -102,7 +107,8 @@ namespace PyramidPanic
                 this.explorer.ExplorerWalkDown.Initialize();
                 //de rotation can explorer idle word aangegeven als pi/2
                 this.explorer.ExplorerIdle.rotation = (float)Math.PI / 2;
-                //maar de effext is aangegeven als flip vertically zodat de fakel aan de linker kant blijft
+                //maar de effect is aangegeven als flipvertically
+                //zodat de fakel aan de linker kant blijft
                 this.effect = SpriteEffects.FlipVertically;
             }
 
@@ -115,7 +121,8 @@ namespace PyramidPanic
                 this.explorer.ExplorerWalkUp.Initialize();
                 //de rotation can explorer idle word aangegeven als pi/2
                 this.explorer.ExplorerIdle.rotation = (float)Math.PI / 2;
-                //maar de effext is aangegeven als flip vertically zodat de fakel aan de linker kant blijft
+                //maar de effect is aangegeven als flipvertically 
+                //zodat de fakel aan de linker kant blijft
                 this.effect = SpriteEffects.FlipVertically;
             }
             this.explorer.Position += this.velocity;

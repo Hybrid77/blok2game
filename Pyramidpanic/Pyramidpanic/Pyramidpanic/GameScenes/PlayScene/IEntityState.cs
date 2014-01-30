@@ -14,7 +14,8 @@ namespace PyramidPanic
 {
     public interface IEntityState
     {
-        //elke toestand van de beetle class past de interface IBeetleState toe
+        //elke toestand van de beetle en scorpion classes 
+        //past de interface IEntityState toe
         void Update(GameTime gameTime);
         void Draw(GameTime gameTime);
         void Initialize();

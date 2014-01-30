@@ -19,7 +19,9 @@ namespace PyramidPanic
     public class ExplorerWalkUp : AnimatedSprite, IEntityState
     {
         //fields
+        //hier word de explorer class als explorer aangegeven
         private Explorer explorer;
+        //hier word de vector2 als velocity aangegeven.
         private Vector2 velocity;
         
 
@@ -47,26 +49,39 @@ namespace PyramidPanic
         //update method
         public new void Update(GameTime gameTime) 
         {
-
+            //hier staat als de positie van explorer.position.y kleiner is dan 17px
             if (this.explorer.Position.Y < 0+ 17) 
             {
+                //dan is de state van explorer Exploreridlewalk.
                 this.explorer.State = this.explorer.ExplorerIdleWalk;
+                //hier word de initialize aangeroepen can explorer idle
                 this.explorer.ExplorerIdle.Initialize();
                
             }
 
+            //als de pijltjes toets die naar bovenwijst niet ingedrukt is:
             if (Input.EdgeDetectKeyUp(Keys.Up))
             {
+                //dan is de state van explorer exploreridle
                 this.explorer.State = this.explorer.ExplorerIdle;
+                //hier word de initialize aangeroepen can explorer idle
                 this.explorer.ExplorerIdle.Initialize();
+                //hier word de effects van exploreridle gelijk gesteld aan spriteeffects.fliphorizontally
+                //dat zorgt ervoor dat de fakkel links blijft
                 this.explorer.ExplorerIdle.Effect = SpriteEffects.FlipHorizontally;
                 
             }
 
 
             this.explorer.Position -= this.velocity;
+            //hier staat dat de destination rextangle van de x
+            //gelijkstaat aan de (int) x positie van this.explorer
             this.destinationRectangle.X = (int)this.explorer.Position.X;
+            //hier staat dat de destination rextangle van de x
+            //gelijkstaat aan de (int) x positie van this.explorer.
             this.destinationRectangle.Y = (int)this.explorer.Position.Y;
+            //hier word de base.update method aangeroepen,
+            //en gameTime word er in mee gegeven
             base.Update(gameTime);
         }
         
