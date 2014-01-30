@@ -19,7 +19,9 @@ namespace PyramidPanic
     public class WalkDown : AnimatedSprite, IEntityState
     {
         //fields
+        //hier kijgt de beetle class de naam beetley
         private Beetle beetle;
+        //hier word de vector2 als velocity aangegeven.
         private Vector2 velocity;
 
         //constructor
@@ -28,13 +30,14 @@ namespace PyramidPanic
         {
             
             this.beetle = beetle;
-
+            //hier word aangegeven dat de beetle verticaal word omgedraait.
             this.effect = SpriteEffects.FlipVertically;
-            
+            //dit geeft de positie van de beetle aan en de breedte en lengte 
             this.destinationRectangle = new Rectangle((int)this.beetle.Position.X, 
                                                       (int)this.beetle.Position.Y, 
                                                        32, 
                                                        32);
+            //hier word de loop snelheid aangegeven van de beetle
             this.velocity = new Vector2(0f, this.beetle.Speed);
         }
 
@@ -50,14 +53,21 @@ namespace PyramidPanic
         //update method
         public new void Update(GameTime gameTime)
         {
+            //als de posietie van de beetle groter is dan 480 - 17px dan:
             if (this.beetle.Position.Y > 480 - 17)
             {
+                //word de state van de beetle verandert naar walk up
                 this.beetle.State = new WalkUp(this.beetle);
+                //daarna word de initialize aangeroepen van this.beetle.walkup
                 this.beetle.WalkUp.Initialize();
             }
-
+            //de beetle loopt doordat er 1x de velocity er bij opgeteld word
             this.beetle.Position += this.velocity;
+            //dit zegt dat de destination rectangle x
+            //gelijk staat aan de positie van de beetle op de x as.
             this.destinationRectangle.X = (int)this.beetle.Position.X;
+            //dit zegt dat de destination rectangle y
+            //gelijk staat aan de positie van de beetle op de y as.
             this.destinationRectangle.Y = (int)this.beetle.Position.Y;
             base.Update(gameTime);
         }

@@ -19,7 +19,9 @@ namespace PyramidPanic
     public class ExplorerWalkDown : AnimatedSprite, IEntityState
     {
         //fields
+        //hier word de explorer class als explorer aangegeven
         private Explorer explorer;
+        //hier word de vector2 als velocity aangegeven.
         private Vector2 velocity;
 
         //constructor
@@ -27,6 +29,7 @@ namespace PyramidPanic
             : base(explorer)
         {
             this.explorer = explorer;
+
             this.destinationRectangle = new Rectangle((int)this.explorer.Position.X, (int)this.explorer.Position.Y, 32, 32);
             this.velocity = new Vector2(0f, this.explorer.Speed);
             this.rotation = (float)Math.PI / 2;

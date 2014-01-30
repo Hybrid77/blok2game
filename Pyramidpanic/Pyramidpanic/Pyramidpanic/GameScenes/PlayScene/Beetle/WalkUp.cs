@@ -47,7 +47,10 @@ namespace PyramidPanic
                 this.beetle.State = this.beetle.WalkDown;
                 this.beetle.WalkDown.Initialize();
             }
+            //de beetle loopt doordat er 1x de velocity er afgehaalt word 
+            //zodat de beetle weer omhoog kan lopen
             this.beetle.Position -= this.velocity;
+
             this.destinationRectangle.X = (int) this.beetle.Position.X;
             this.destinationRectangle.Y = (int)this.beetle.Position.Y;
             base.Update(gameTime);

@@ -29,11 +29,15 @@ namespace PyramidPanic
         public ExplorerWalkUp(Explorer explorer)
             : base(explorer)
         {
-            this.explorer = explorer;
-            this.destinationRectangle = new Rectangle((int)this.explorer.Position.X, (int)this.explorer.Position.Y, 32, 32);
-            this.velocity = new Vector2(0f, this.explorer.Speed);
+            //word de velocity 0 en kan de explorer neit meer bewegen
+            this.explorer.Position += this.velocity;
+            //de state verandert naar explorer idle walk
+            this.explorer.State = this.explorer.ExplorerIdleWalk;
+            //de sprite effect word fliphorizontally 
+            //zodat de explorer in idlewalk nogsteeds naar links bijlft kijken
+            this.explorer.ExplorerIdleWalk.Effect = SpriteEffects.FlipHorizontally;
+            //en de rotation krijgt een vaste waarde van nul in exploreridle walk
             this.rotation = (float)Math.PI / 2;
-            this.effect = SpriteEffects.FlipHorizontally;
            
         }
 
