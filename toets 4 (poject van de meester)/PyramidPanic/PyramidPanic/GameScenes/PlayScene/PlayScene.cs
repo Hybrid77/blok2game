@@ -25,6 +25,7 @@ namespace PyramidPanic
         private Block block4;
         private Block block5;
         private Block block6;
+        private Level level;
 
         // Constructor van de StartScene-class krijgt een object game mee van het type PyramidPanic
         public PlayScene(PyramidPanic game)
@@ -55,6 +56,7 @@ namespace PyramidPanic
             this.block4 = new Block(this.game, @"Block\Door", new Vector2(96f, 0f));
             this.block5 = new Block(this.game, @"BLock\Block_hor", new Vector2(128f, 0f));
             this.block6 = new Block(this.game, @"Block\Block_vert", new Vector2(160f, 0f));
+            this.level = new Level(this.game, 0);
         }
 
         // Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
@@ -70,12 +72,8 @@ namespace PyramidPanic
             this.scorpion.Update(gameTime);
             this.scorpion1.Update(gameTime);
             this.explorer.Update(gameTime);
-            this.block1.Draw(gameTime);
-            this.block2.Draw(gameTime);
-            this.block3.Draw(gameTime);
-            this.block4.Draw(gameTime);
-            this.block5.Draw(gameTime);
-            this.block6.Draw(gameTime);
+           
+            
         }
 
         // Draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en
@@ -88,6 +86,7 @@ namespace PyramidPanic
             this.scorpion.Draw(gameTime);
             this.scorpion1.Draw(gameTime);
             this.explorer.Draw(gameTime);
+            this.level.Draw(gameTime);
         }
     }
 }
