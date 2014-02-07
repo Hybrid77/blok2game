@@ -19,7 +19,12 @@ namespace PyramidPanic
         private Beetle beetle, beetle1;
         private Scorpion scorpion, scorpion1;
         private Explorer explorer;
-        private Block block1; 
+        private Block block1;
+        private Block block2;
+        private Block block3;
+        private Block block4;
+        private Block block5;
+        private Block block6;
 
         // Constructor van de StartScene-class krijgt een object game mee van het type PyramidPanic
         public PlayScene(PyramidPanic game)
@@ -44,6 +49,12 @@ namespace PyramidPanic
             this.scorpion = new Scorpion(this.game, new Vector2(300f, 188f));
             this.scorpion1 = new Scorpion(this.game, new Vector2(188f, 300f));
             this.explorer = new Explorer(this.game, new Vector2(304f, 240f));
+            this.block1 = new Block(this.game, @"Block\Block", new Vector2(0f, 0f));
+            this.block2 = new Block(this.game, @"Block\Wall1", new Vector2(32f, 0f));
+            this.block3 = new Block(this.game, @"Block\Wall2", new Vector2(64f, 0f));
+            this.block4 = new Block(this.game, @"Block\Door", new Vector2(96f, 0f));
+            this.block5 = new Block(this.game, @"BLock\Block_hor", new Vector2(128f, 0f));
+            this.block6 = new Block(this.game, @"Block\Block_vert", new Vector2(160f, 0f));
         }
 
         // Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
@@ -59,6 +70,12 @@ namespace PyramidPanic
             this.scorpion.Update(gameTime);
             this.scorpion1.Update(gameTime);
             this.explorer.Update(gameTime);
+            this.block1.Draw(gameTime);
+            this.block2.Draw(gameTime);
+            this.block3.Draw(gameTime);
+            this.block4.Draw(gameTime);
+            this.block5.Draw(gameTime);
+            this.block6.Draw(gameTime);
         }
 
         // Draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en

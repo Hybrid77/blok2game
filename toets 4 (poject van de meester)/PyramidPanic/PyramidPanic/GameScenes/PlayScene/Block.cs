@@ -8,28 +8,25 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-
+ 
 namespace PyramidPanic
 {
     public class Block : Image
     {
-        // Fields
+        //Fields
 
-        // Properties
+        //Properties
 
-        // Contructor
-        public Block(PyramidPanic game, string pathNameAsset, Vector2 position) : base(game, pathNameAsset, position)
+        //Constructor
+        public Block(PyramidPanic game, string pathNameAsset, Vector2 position ) 
+            : base(game, pathNameAsset, position)
         {
 
         }
 
-        // Update
-        public void Update()
-        {
+        //Update
 
-        }
-
-        // Draw
+        //Draw
         public void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
