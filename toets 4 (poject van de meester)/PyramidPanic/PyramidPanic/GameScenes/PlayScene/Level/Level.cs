@@ -23,7 +23,7 @@ namespace PyramidPanic
         private Stream stream;
         private List<String> lines;
         private Block[,] blocks;
-
+        private 
 
 
 
@@ -63,7 +63,7 @@ namespace PyramidPanic
         //Draw Method
         public void Draw(GameTime gameTime) 
         {
-
+            this.background = background;
             //het blocks array word getekend door middel van een dubbele for-lus.
             for (int row = 0; row < this.blocks.GetLength(1); row++) 
             {
@@ -123,6 +123,7 @@ namespace PyramidPanic
                     for (int column = 0; column < lineWidth; column++)
                     {
                     //dit leest iedere letter uit de lines-list uit in een char variable
+
                     char blockElement = this.lines[row][column];
                     this.blocks[column, row] =this.LoadBlock(blockElement, column * 32, row * 32);
                     }
@@ -133,14 +134,28 @@ namespace PyramidPanic
         {
 
             switch(blockElement){
+
+                case 'd':
+                    return new Block(this.game, @"Block\Door", new Vector2(x, y));
+
                 case 'x': 
                     return new Block(this.game, @"Block\Block", new Vector2(x, y));
+
+
+
+                case 'a':
+                    return new Block(this.game, @"Block\wall1", new Vector2(x, y));
+
+                case 'b':
+                    return new Block(this.game, @"Block\Wall2", new Vector2(x, y));
 
                 case '.':
                     return new Block(this.game, @"Block\Transparant", new Vector2(x, y));
 
                 default:
                     return new Block(this.game, @"Block\Transparant", new Vector2(x, y));
+
+
 
             }
         }
