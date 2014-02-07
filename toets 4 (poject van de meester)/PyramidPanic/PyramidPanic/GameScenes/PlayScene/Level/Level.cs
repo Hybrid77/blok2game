@@ -21,7 +21,7 @@ namespace PyramidPanic
         private PyramidPanic game;
         private int levelIndex;
         private Stream stream;
-
+        private List<String> lines;
 
 
 
@@ -35,6 +35,8 @@ namespace PyramidPanic
         {
             get { return this.levelIndex; }
         }
+        
+
 
 
 
@@ -43,8 +45,8 @@ namespace PyramidPanic
         {
             this.game = game;
             this.levelIndex = levelIndex;
-            this.stream = stream;
-
+            this.stream = TitleContainer.OpenStream(@"Content\Level\0.txt");
+            this.LoadAssets();
 
         
         }
@@ -53,6 +55,17 @@ namespace PyramidPanic
 
 
         //Draw Method
+        private void LoadAssets()
+        {
+            //Deze list van Strings slaat elke regel van 0.txt op
+            this.lines = new List<String>();
+            //De StreamReader kan lezen wat er in het text bestand staat.
+            StreamReader reader= new StreamReader(this.stream);
+            //leest een regel
+            string line = reader.ReadLine();
+            //schrijft een regel
+            Console.WriteLine(line);
+        }
 
     }
 }
