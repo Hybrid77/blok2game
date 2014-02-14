@@ -23,8 +23,6 @@ namespace PyramidPanic
         private Stream stream;
         private List<String> lines;
         private Block[,] blocks;
-        private 
-
 
 
         //Properties
